@@ -8,34 +8,29 @@ GPIO.setmode(GPIO.BCM)
 
 # DEFINE PINS
 leftpuff = 8
-righpuff = 7
+rightpuff = 7
 
 
 # INITIALIZE PINS
-GPIO.setup(leftlpuff, GPIO.OUT, initial=0)
+GPIO.setup(leftpuff, GPIO.OUT, initial=0)
 GPIO.setup(rightpuff, GPIO.OUT, initial=0)
 
 # ENTER VARIABLES RANGE TO TEST
-numberofcycles = 10
-startms = 100
+timeoninsec = 1
+inbetweensec = 1
 
 # SCRIPT
-
-loopstat = numberofcycles + 1
-
-for a in range(loopstat)
-    if a == 0;
-        continue
-    startms = startms * a
-    print('left ', startms, "ms")
-    GPIO.output(leftpuff, 1)
-    time.sleep(startms)
-    GPIO.output(leftpuff, 0)
-    print('left ', startms, "ms")
-    GPIO.output(rightpuff, 1)
-    time.sleep(startms)
-    GPIO.output(rightpuff, 0)
-    time.sleep(0.5)
-
+GPIO.output(leftpuff, 1)
+print('left on GPIO 8')
+time.sleep(timeoninsec)
+GPIO.output(leftpuff, 0)
+print('OFF left GPIO 8')
+time.sleep(inbetweensec)
+GPIO.output(rightpuff, 1)
+print('left on GPIO 8')
+time.sleep(timeoninsec)
+GPIO.output(rightpuff, 0)
+print('OFF left GPIO 8')
+time.sleep(inbetweensec)
 
 
